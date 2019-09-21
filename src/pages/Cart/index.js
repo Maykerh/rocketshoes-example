@@ -1,20 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 
 import CartItem from '../../components/CartItem';
+
+import * as CartActions from '../../store/modules/cart/actions';
 
 import { Container, ProductTable, Total } from './styles';
 // import { MdRemoveCircleOutline, MdAddCircleOutline } from 'react-icons/md';
 
-const cart = [
-	{
-		image: '',
-		title: 'tenis massa',
-		priceFormatted: '57',
-		amount: 1,
-		subtotal: 10
-	}
-];
-export default function Cart() {
+function Cart({ cart, removeFromCart }) {
 	return (
 		<Container>
 			<ProductTable>
@@ -29,13 +25,20 @@ export default function Cart() {
 				</thead>
 				<tbody>
 					{cart.map(product => (
-						<CartItem {...product} />
+						<CartItem
+							img={product.image}
+							title={product.title}
+							price={product.price}
+							amount={product.amount}
+							id={product.id}
+							removeFromCart={removeFromCart}
+						/>
 					))}
 				</tbody>
 			</ProductTable>
 
 			<footer>
-				<button type='button'>Finalizar pedido</button>
+				<button type="button">Finalizar pedido</button>
 
 				<Total>
 					<span>TOTAL</span>
@@ -45,3 +48,19 @@ export default function Cart() {
 		</Container>
 	);
 }
+
+Cart.protoTypes = {
+	cart: PropTypes.array,
+};
+
+const mapDispatchToProps = dispatch =>
+	bindActionCreators(CartActions, dispatch);
+
+const mapStateToProps = state => ({
+	cart: state.cart,
+});
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Cart);
