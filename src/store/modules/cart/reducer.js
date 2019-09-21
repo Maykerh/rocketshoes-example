@@ -1,8 +1,6 @@
 const initialState = [];
 
 export default function cart(state = initialState, action) {
-	const newState = state;
-
 	switch (action.type) {
 		case '@cart/ADD':
 			const newState = [...state];
