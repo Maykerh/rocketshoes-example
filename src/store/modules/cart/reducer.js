@@ -4,7 +4,7 @@ export default function cart(state = initialState, action) {
 	const newState = state;
 
 	switch (action.type) {
-		case 'ADD_TO_CART':
+		case '@cart/ADD':
 			const newState = [...state];
 			const productIndex = Object.keys(newState).filter(
 				key => state[key].id === action.product.id
@@ -20,8 +20,20 @@ export default function cart(state = initialState, action) {
 			}
 
 			return newState;
-		case 'REMOVE_FROM_CART':
+		case '@cart/REMOVE':
 			return state.filter(product => product.id !== action.id);
+		case '@cart/UPDATE_AMOUNT':
+			if (action.payload.amount <= 0) {
+				return state;
+			}
+
+			return state.map(product => {
+				if (product.id === action.payload.id) {
+					product.amount = action.payload.amount;
+				}
+
+				return product;
+			});
 		default:
 			return state;
 	}

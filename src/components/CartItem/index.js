@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import {
 	MdRemoveCircleOutline,
@@ -7,7 +8,13 @@ import {
 } from 'react-icons/md';
 import { Container } from './styles';
 
-export default class CartItem extends Component {
+class CartItem extends Component {
+	changeAmount(id, amount) {
+		const { updateAmount } = this.props;
+
+		updateAmount(id, amount);
+	}
+
 	render() {
 		const {
 			img,
@@ -30,11 +37,17 @@ export default class CartItem extends Component {
 				</td>
 				<td>
 					<div>
-						<button type="button" onClick={() => {}}>
+						<button
+							type="button"
+							onClick={() => this.changeAmount(id, amount - 1)}
+						>
 							<MdRemoveCircleOutline size={20} color="#7159c1" />
 						</button>
 						<input type="number" readOnly value={amount} />
-						<button type="button" onClick={() => {}}>
+						<button
+							type="button"
+							onClick={() => this.changeAmount(id, amount + 1)}
+						>
 							<MdAddCircleOutline size={20} color="#7159c1" />
 						</button>
 					</div>
@@ -51,3 +64,16 @@ export default class CartItem extends Component {
 		);
 	}
 }
+
+CartItem.propTypes = {
+	img: PropTypes.string,
+	title: PropTypes.string,
+	price: PropTypes.string,
+	amount: PropTypes.number,
+	subtotal: PropTypes.string,
+	id: PropTypes.number,
+	removeFromCart: PropTypes.func,
+	updateAmount: PropTypes.func,
+};
+
+export default CartItem;
