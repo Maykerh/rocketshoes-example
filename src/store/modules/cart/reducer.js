@@ -2,7 +2,7 @@ const initialState = [];
 
 export default function cart(state = initialState, action) {
 	switch (action.type) {
-		case '@cart/ADD':
+		case '@cart/ADD_SUCCESS':
 			const newState = [...state];
 			const productIndex = Object.keys(newState).filter(
 				key => state[key].id === action.product.id
