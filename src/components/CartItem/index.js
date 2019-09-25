@@ -10,9 +10,9 @@ import { Container } from './styles';
 
 class CartItem extends Component {
 	changeAmount(id, amount) {
-		const { updateAmount } = this.props;
+		const { updateAmountRequest } = this.props;
 
-		updateAmount(id, amount);
+		updateAmountRequest(id, amount);
 	}
 
 	render() {
@@ -73,7 +73,7 @@ CartItem.propTypes = {
 	subtotal: PropTypes.string,
 	id: PropTypes.number,
 	removeFromCart: PropTypes.func,
-	updateAmount: PropTypes.func,
+	updateAmountRequest: PropTypes.func,
 };
 
 export default CartItem;

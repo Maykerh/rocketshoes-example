@@ -12,7 +12,7 @@ import * as CartActions from '../../store/modules/cart/actions';
 import { Container, ProductTable, Total } from './styles';
 // import { MdRemoveCircleOutline, MdAddCircleOutline } from 'react-icons/md';
 
-function Cart({ cart, removeFromCart, updateAmount, total }) {
+function Cart({ cart, removeFromCart, updateAmountRequest, total }) {
 	return (
 		<Container>
 			<ProductTable>
@@ -35,7 +35,7 @@ function Cart({ cart, removeFromCart, updateAmount, total }) {
 							id={product.id}
 							subtotal={product.subtotal}
 							removeFromCart={removeFromCart}
-							updateAmount={updateAmount}
+							updateAmountRequest={updateAmountRequest}
 						/>
 					))}
 				</tbody>
