@@ -1,8 +1,6 @@
 Projeto para estudos utilizando react, redux e saga
 
-<img src="https://raw.githubusercontent.com/Maykerh/rocketshoes-example/master/examples/exemplo%201.png" width="1100" height="750">
-
-<img src="https://raw.githubusercontent.com/Maykerh/rocketshoes-example/master/examples/exemplo%202.png" width="1100" height="700">
+<img src="https://raw.githubusercontent.com/Maykerh/rocketshoes-example/master/examples/exemplo%201.png" width="200" height="200"> <img src="https://raw.githubusercontent.com/Maykerh/rocketshoes-example/master/examples/exemplo%202.png" width="200" height="200">
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
